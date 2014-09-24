@@ -1,0 +1,6 @@
+.DS_Store
+.ruby-gemset
+.ruby-version
+.vagrant
+cookbooks
+tmp

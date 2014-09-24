@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+site "https://supermarket.getchef.com/api/v1"
+
+cookbook "inaturalist-cookbook", :git => 'git://github.com/pleary/inaturalist-cookbook.git'
+cookbook "rvm", :git => 'git://github.com/fnichol/chef-rvm.git', :ref => 'v0.9.0'
