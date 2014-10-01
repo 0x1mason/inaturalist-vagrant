@@ -12,13 +12,19 @@ Installation
 
 ####On your local machine
 ```
+git clone git@github.com:pleary/inaturalist-vagrant.git
+cd inaturalist-vagrant
 bundle
 librarian-chef install
-vagrant up
-vagrant ssh
 ```
 
-####On the new VM:
+####To create a development Rails environment:
+```
+vagrant up app
+vagrant ssh app
+```
+
+...and then on the new machine:
 ```
 cd rails/inaturalist
 bundle
@@ -26,3 +32,17 @@ rake db:setup
 rake db:setup RAILS_ENV=test
 rspec
 ```
+
+####To create a development windshaft server:
+```
+vagrant up varnish
+vagrant ssh varnish
+```
+
+...and then on the new machine:
+```
+cd windshaft
+node app.js
+```
+
+You should see a tile image with black dots at (http://192.168.50.6/observations/points/10/236/422.png)
