@@ -35,8 +35,8 @@ rspec
 
 ####To create a development windshaft server:
 ```
-vagrant up varnish
-vagrant ssh varnish
+vagrant up windshaft
+vagrant ssh windshaft
 ```
 
 ...and then on the new machine:
@@ -45,4 +45,4 @@ cd windshaft
 node app.js
 ```
 
-You should see a tile image with black dots at (http://192.168.50.6/observations/points/10/236/422.png)
+You should see a tile image with black dots at http://192.168.50.6/observations/points/10/236/422.png
