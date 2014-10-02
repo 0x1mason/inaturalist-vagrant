@@ -1,7 +1,8 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-run_list = [ ]
+run_list = [ "recipe[inaturalist-cookbook]" ]
+attributes = { }
 
 Vagrant.configure("2") do |c|
   c.omnibus.chef_version = :latest
@@ -16,7 +17,6 @@ Vagrant.configure("2") do |c|
       p.customize [ "modifyvm", :id, "--cpus", "1" ]
       p.name = "inaturalist-app"
     end
-    run_list << "recipe[inaturalist-cookbook]"
     run_list << "recipe[inaturalist-cookbook::development]"
     run_list << "recipe[inaturalist-cookbook::_development_config]"
   end
@@ -29,7 +29,6 @@ Vagrant.configure("2") do |c|
       p.customize [ "modifyvm", :id, "--cpus", "1" ]
       p.name = "inaturalist-app2"
     end
-    run_list << "recipe[inaturalist-cookbook]"
     run_list << "recipe[inaturalist-cookbook::development]"
     run_list << "recipe[inaturalist-cookbook::_development_config]"
   end
@@ -42,38 +41,51 @@ Vagrant.configure("2") do |c|
       p.customize [ "modifyvm", :id, "--cpus", "1" ]
       p.name = "inaturalist-windshaft"
     end
-    run_list << "recipe[inaturalist-cookbook]"
-    run_list << "recipe[inaturalist-cookbook::varnish]"
+    run_list << "recipe[inaturalist-cookbook::windshaft]"
+  end
+
+  c.vm.define "db" do |s|
+    s.vm.hostname = "inaturalist-db"
+    s.vm.network "private_network", ip: "192.168.50.7"
+    s.vm.provider :virtualbox do |p|
+      p.customize [ "modifyvm", :id, "--memory", "4096" ]
+      p.customize [ "modifyvm", :id, "--cpus", "4" ]
+      p.name = "inaturalist-db"
+    end
+    attributes[:postgresql] ||= { }
+    attributes[:postgresql][:config] ||= { }
+    attributes[:postgresql][:config][:listen_addresses] = "192.168.50.7"
+    attributes[:postgresql][:pg_hba] = [
+      { type: "host", db: "all", :user => "postgres", :addr => "192.168.50.0/24", :method => "trust" }
+    ]
+    run_list << "recipe[inaturalist-cookbook::database]"
   end
 
   c.vm.provision :chef_solo do |chef|
-    chef.json = {
-      postgresql: {
-        password: {
-          postgres: "vagrantpostgrespw"
+    chef.json = attributes
+    chef.json[:postgresql] ||= { }
+    chef.json[:postgresql][:password] ||= { }
+    chef.json[:postgresql][:password][:postgres] ||= "vagrantpostgrespw"
+    chef.json[:rvm] = {
+      user_installs: [ {
+        user: "vagrant",
+        rubies: [ "ruby-1.9.3" ],
+        default_ruby: "ruby-1.9.3@inaturalist",
+        vagrant: {
+          system_chef_solo: "/usr/bin/chef-solo"
         }
-      },
-      rvm: {
-        user_installs: [ {
-          user: "vagrant",
-          rubies: [ "ruby-1.9.3" ],
-          default_ruby: "ruby-1.9.3",
-          vagrant: {
-            system_chef_solo: "/usr/bin/chef-solo"
-          }
-        } ]
-      },
-      authorization: {
-        sudo: {
-          users: [ "vagrant" ],
-          passwordless: true
-        }
-      },
-      varnish: {
-        listen_port: 80,
-        vcl_cookbook: "inaturalist-cookbook",
-        vcl_source: "vagrant_default.vcl.erb"
+      } ]
+    }
+    chef.json[:authorization] = {
+      sudo: {
+        users: [ "vagrant" ],
+        passwordless: true
       }
+    }
+    chef.json[:varnish] = {
+      listen_port: 80,
+      vcl_cookbook: "inaturalist-cookbook",
+      vcl_source: "vagrant_default.vcl.erb"
     }
 
     # You can uncomment and modify these values to point to your

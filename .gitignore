@@ -3,4 +3,6 @@
 # .ruby-version
 .vagrant
 cookbooks
+inaturalist_production.csql
+inaturalist_production.daily.csql
 tmp
