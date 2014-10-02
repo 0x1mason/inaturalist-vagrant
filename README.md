@@ -51,6 +51,7 @@ vagrant up windshaft
 This can take 10-15 minutes. You can then log into the new machine and start the windshaft application:
 
 ```
+vagrant ssh windshaft
 sudo start windshaft
 ```
 
