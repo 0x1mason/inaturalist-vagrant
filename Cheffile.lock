@@ -25,7 +25,7 @@ SITE
       apt (>= 1.9.0)
       build-essential (>= 0.0.0)
       openssl (>= 0.0.0)
-    redisio (2.2.3)
+    redisio (2.2.4)
       build-essential (>= 0.0.0)
       ulimit (>= 0.1.2)
     runit (1.5.10)
@@ -51,7 +51,7 @@ GIT
 GIT
   remote: git://github.com/pleary/inaturalist-cookbook.git
   ref: master
-  sha: 1892346d968cfe476e41d17cdccce62dd56fe54a
+  sha: b7db6e53cc85e54f5af7d331b702c0481a2e6d94
   specs:
     inaturalist-cookbook (0.1.0)
       apt (>= 0.0.0)
@@ -97,16 +97,10 @@ GIT
       build-essential (>= 0.0.0)
       yum-epel (>= 0.0.0)
 
-PATH
-  remote: /Users/pleary/Webroot/chef/varnish_custom
-  specs:
-    varnish_custom (0.1.0)
-
 DEPENDENCIES
   disable_ipv6 (>= 0)
   inaturalist-cookbook (>= 0)
   nodejs (>= 0)
   rvm (>= 0)
   varnish (>= 0)
-  varnish_custom (>= 0)
 

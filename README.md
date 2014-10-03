@@ -8,6 +8,7 @@ Installation
 * [Ruby](https://www.ruby-lang.org/en/downloads/)
 * [VirtualBox](https://www.virtualbox.org/wiki/Downloads/)
 * [Vagrant](https://www.vagrantup.com/downloads.html/)
+* [vagrant-omnibus plugin](https://github.com/opscode/vagrant-omnibus) , installed with `vagrant plugin install vagrant-omnibus`
 
 ####On your local machine
 
@@ -52,6 +53,8 @@ This can take 10-15 minutes. You can then log into the new machine and start the
 
 ```
 vagrant ssh windshaft
+cd windshaft
+sudo npm install
 sudo start windshaft
 ```
 
