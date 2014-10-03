@@ -39,7 +39,7 @@ This can can take 15-20 minutes. You can then log into the new machine and run t
 
 ```
 vagrant ssh app
-cd rails/inaturalist
+cd /vagrant/shared/rails/inaturalist
 rspec
 ```
 
@@ -53,7 +53,7 @@ This can take 10-15 minutes. You can then log into the new machine and start the
 
 ```
 vagrant ssh windshaft
-cd windshaft
+cd /vagrant/shared/nodejs/windshaft
 sudo npm install
 sudo start windshaft
 ```

@@ -5,4 +5,5 @@
 cookbooks
 inaturalist_production.csql
 inaturalist_production.daily.csql
+shared
 tmp
