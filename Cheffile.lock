@@ -51,9 +51,9 @@ GIT
 GIT
   remote: git://github.com/pleary/inaturalist-cookbook.git
   ref: master
-  sha: 983784723d5abc98a151b0fb893ad34ae8a4db2b
+  sha: f3d6e97c7d60155c139c14d0c9e382bd33f157b7
   specs:
-    inaturalist-cookbook (0.1.0)
+    inaturalist-cookbook (0.1.1)
       apt (>= 0.0.0)
       build-essential (>= 0.0.0)
       curl (>= 0.0.0)
