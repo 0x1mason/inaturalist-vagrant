@@ -1,0 +1,17 @@
+{
+  "name": "base",
+  "description": "base role",
+  "json_class": "Chef::Role",
+  "chef_type": "role",
+  "run_list": [
+    "recipe[inaturalist-cookbook::bootstrap_system]"
+  ],
+  "default_attributes": {
+    "authorization" : {
+      "sudo": {
+        "users": [ "vagrant", "inaturalist" ],
+        "passwordless": true
+      }
+    }
+  }
+}

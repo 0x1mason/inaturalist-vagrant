@@ -54,8 +54,7 @@ This can take 10-15 minutes. You can then log into the new machine and start the
 ```
 vagrant ssh windshaft
 cd /vagrant/shared/nodejs/windshaft
-sudo npm install
-sudo start windshaft
+node app.js
 ```
 
-Confirm this is working by loading this URL: http://192.168.50.6/observations/points/10/236/422.png . You should see a tile image with black dots at
+Confirm this is working by loading this URL: http://192.168.50.6:4000/observations/points/10/236/422.png . You should see a tile image with black dots at

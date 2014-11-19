@@ -3,15 +3,29 @@ SITE
   specs:
     7-zip (1.0.2)
       windows (>= 1.2.2)
+    apache2 (2.0.0)
+      iptables (>= 0.0.0)
+      logrotate (>= 0.0.0)
+      pacman (>= 0.0.0)
     apt (2.6.0)
     ark (0.9.0)
       7-zip (>= 0.0.0)
       windows (>= 0.0.0)
-    build-essential (2.0.6)
-    chef-sugar (2.3.0)
+    bluepill (2.3.1)
+      rsyslog (>= 0.0.0)
+    build-essential (2.1.3)
+    chef-server (2.1.6)
+    chef-sugar (2.4.1)
     chef_handler (1.1.6)
-    curl (2.0.0)
-    dmg (2.2.0)
+    cron (1.6.1)
+    curl (2.0.1)
+    dmg (2.2.2)
+    erlang (1.5.6)
+      apt (>= 1.7.0)
+      build-essential (>= 0.0.0)
+      yum (~> 3.0)
+      yum-epel (>= 0.0.0)
+      yum-erlang_solutions (>= 0.0.0)
     git (4.0.2)
       build-essential (>= 0.0.0)
       dmg (>= 0.0.0)
@@ -19,27 +33,84 @@ SITE
       windows (>= 0.0.0)
       yum (~> 3.0)
       yum-epel (>= 0.0.0)
+    grafana (1.5.3)
+      ark (>= 0.7.2)
+      git (>= 0.0.0)
+      nginx (>= 0.0.0)
+    graphite (1.0.2)
+      build-essential (>= 0.0.0)
+      memcached (>= 0.0.0)
+      python (>= 0.0.0)
+      runit (~> 1.0)
+      yum-epel (>= 0.0.0)
+    iptables (0.14.0)
+    logrotate (1.7.0)
+    memcached (1.7.2)
+      runit (~> 1.0)
+      yum (~> 3.0)
+      yum-epel (>= 0.0.0)
+    nginx (2.7.4)
+      apt (~> 2.2)
+      bluepill (~> 2.3)
+      build-essential (~> 2.0)
+      ohai (~> 2.0)
+      runit (~> 1.2)
+      yum-epel (~> 0.3)
+    ohai (2.0.1)
+    omnibus_updater (1.0.2)
     openssl (2.0.0)
       chef-sugar (>= 0.0.0)
-    postgresql (3.4.6)
+    pacman (1.1.1)
+    postfix (3.6.2)
+    postgresql (3.4.12)
       apt (>= 1.9.0)
       build-essential (>= 0.0.0)
       openssl (>= 0.0.0)
+    python (1.4.6)
+      build-essential (>= 0.0.0)
+      yum-epel (>= 0.0.0)
+    rabbitmq (3.3.0)
+      erlang (>= 0.9)
     redisio (2.2.4)
       build-essential (>= 0.0.0)
       ulimit (>= 0.1.2)
+    rsyslog (1.12.2)
     runit (1.5.10)
       build-essential (>= 0.0.0)
       yum (~> 3.0)
       yum-epel (>= 0.0.0)
+    sensu (2.2.0)
+      apt (>= 0.0.0)
+      rabbitmq (>= 2.0.0)
+      redisio (>= 1.7.0)
+      windows (>= 1.8.8)
+      yum (>= 0.0.0)
     sudo (2.7.1)
+    timezone (0.0.1)
+    uchiwa (0.5.0)
+      apt (>= 0.0.0)
+      nodejs (>= 0.0.0)
+      yum (>= 0.0.0)
     ulimit (0.3.2)
+    users (1.7.0)
     vim (1.1.2)
-    windows (1.34.6)
+    windows (1.34.8)
       chef_handler (>= 0.0.0)
-    yum (3.3.2)
-    yum-epel (0.5.1)
+    yum (3.4.1)
+    yum-epel (0.5.2)
       yum (~> 3.0)
+    yum-erlang_solutions (0.2.0)
+      yum (~> 3.0)
+
+GIT
+  remote: git://github.com/JeanMertz/chef-client.git
+  ref: chef_server_12_user
+  sha: 5d6d06d254deb41e6cd6786436286a764d213705
+  specs:
+    chef-client (3.8.0)
+      cron (>= 1.2.0)
+      logrotate (>= 1.2.0)
+      windows (~> 1.11)
 
 GIT
   remote: git://github.com/fnichol/chef-rvm.git
@@ -49,32 +120,64 @@ GIT
     rvm (0.9.0)
 
 GIT
+  remote: git://github.com/librato/statsd-cookbook.git
+  ref: master
+  sha: e74339c8693d7a9ab0d722ee7434959d864cedd5
+  specs:
+    statsd (0.3.5)
+      build-essential (>= 0.0.0)
+      git (>= 0.0.0)
+      nodejs (>= 0.5.2)
+
+GIT
   remote: git://github.com/pleary/inaturalist-cookbook.git
   ref: master
-  sha: f3d6e97c7d60155c139c14d0c9e382bd33f157b7
+  sha: 1a154dcfd45c769a8766f8cb567868f98b1ca3b1
   specs:
-    inaturalist-cookbook (0.1.1)
+    inaturalist-cookbook (0.1.5)
+      apache2 (>= 0.0.0)
       apt (>= 0.0.0)
       build-essential (>= 0.0.0)
+      chef-client (>= 0.0.0)
+      chef-server (>= 0.0.0)
+      collectd (>= 0.0.0)
+      collectd_plugins (>= 0.0.0)
       curl (>= 0.0.0)
       git (>= 0.0.0)
+      grafana (>= 0.0.0)
+      graphite (>= 0.0.0)
+      monitor (>= 0.0.0)
       nodejs (>= 0.0.0)
+      omnibus_updater (>= 0.0.0)
+      postfix (>= 0.0.0)
       postgresql (>= 0.0.0)
       redisio (>= 0.0.0)
       rvm (>= 0.0.0)
+      statsd (>= 0.0.0)
       sudo (>= 0.0.0)
+      timezone (>= 0.0.0)
+      users (>= 0.0.0)
       varnish (>= 0.0.0)
       vim (>= 0.0.0)
 
 GIT
+  remote: git://github.com/portertech/chef-monitor.git
+  ref: master
+  sha: 150f5a9d9f32cd3dcfc9669156100169916a96fc
+  specs:
+    monitor (0.0.5)
+      sensu (>= 0.0.0)
+      sudo (>= 0.0.0)
+      uchiwa (>= 0.0.0)
+
+GIT
   remote: git://github.com/rackspace-cookbooks/varnish.git
   ref: master
-  sha: 5ca58f404c0e9f7f967369892f3f329c38c548f4
+  sha: c022e2f0032bbf11b91d52520af0bfdb5e840507
   specs:
-    varnish (1.0.0)
+    varnish (1.0.3)
       apt (~> 2.4)
       build-essential (>= 0.0.0)
-      disable_ipv6 (>= 0.0.0)
       yum (~> 3.0)
       yum-epel (>= 0.0.0)
 
@@ -82,25 +185,45 @@ GIT
   remote: git://github.com/rackspace-cookbooks/varnish.git
   path: test/fixtures/cookbooks/disable_ipv6
   ref: master
-  sha: 5ca58f404c0e9f7f967369892f3f329c38c548f4
+  sha: 91bd8cbaddbc8bbc4910b8169ee3db8a704e77e1
   specs:
     disable_ipv6 (0.0.1)
 
 GIT
   remote: git://github.com/redguide/nodejs.git
   ref: master
-  sha: 541d00120156065255a56c69dfc1b3ccb95bfdf2
+  sha: 97e0d8591ae02d38bcad761df9322db16b53252d
   specs:
-    nodejs (2.1.1)
+    nodejs (2.2.1)
       apt (>= 0.0.0)
       ark (>= 0.0.0)
       build-essential (>= 0.0.0)
       yum-epel (>= 0.0.0)
 
+GIT
+  remote: https://github.com/Shopify/chef-collectd_plugins.git
+  ref: master
+  sha: c5daae9631d0fb7e52894a2dec74dcdac33f767d
+  specs:
+    collectd_plugins (1.1.0)
+      collectd (>= 0.0.0)
+
+GIT
+  remote: https://github.com/coderanger/chef-collectd.git
+  ref: master
+  sha: f0f1d680d09c12166ea19083c3ffe4e07aa18e99
+  specs:
+    collectd (1.0.0)
+
 DEPENDENCIES
+  chef-client (>= 0)
+  collectd (>= 0)
+  collectd_plugins (>= 0)
   disable_ipv6 (>= 0)
   inaturalist-cookbook (>= 0)
+  monitor (>= 0)
   nodejs (>= 0)
   rvm (>= 0)
+  statsd (>= 0)
   varnish (>= 0)
 

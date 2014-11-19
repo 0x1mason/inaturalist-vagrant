@@ -1,0 +1,21 @@
+{
+  "name": "development_app",
+  "description": "development_app role",
+  "json_class": "Chef::Role",
+  "chef_type": "role",
+  "run_list": [
+    "recipe[inaturalist-cookbook::development]"
+  ],
+  "default_attributes": {
+    "inaturalist": {
+      "install_directory": "/vagrant/shared/rails/inaturalist",
+      "db": {
+        "host": "192.168.50.7",
+        "user": "postgres",
+        "database": "inaturalist_production",
+        "port": 5432,
+        "debug": true
+      }
+    }
+  }
+}

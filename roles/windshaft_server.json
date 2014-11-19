@@ -1,0 +1,21 @@
+{
+  "name": "windshaft_server",
+  "description": "windshaft_server role",
+  "json_class": "Chef::Role",
+  "chef_type": "role",
+  "run_list": [
+    "recipe[inaturalist-cookbook::windshaft_load_balancer]",
+    "recipe[inaturalist-cookbook::windshaft]"
+  ],
+  "default_attributes": {
+    "windshaft": {
+      "db": {
+        "host": "192.168.50.7",
+        "user": "postgres",
+        "database": "inaturalist_production",
+        "port": 5432,
+        "debug": true
+      }
+    }
+  }
+}

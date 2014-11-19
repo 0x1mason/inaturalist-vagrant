@@ -1,0 +1,10 @@
+{
+  "name": "sensu_server",
+  "description": "sensu_server role",
+  "json_class": "Chef::Role",
+  "chef_type": "role",
+  "run_list": [
+    "role[sensu]",
+    "recipe[inaturalist-cookbook::sensu_server]"
+  ]
+}

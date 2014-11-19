@@ -1,0 +1,28 @@
+{
+  "name": "database",
+  "description": "database role",
+  "json_class": "Chef::Role",
+  "chef_type": "role",
+  "run_list": [
+    "recipe[inaturalist-cookbook::database]"
+  ],
+  "default_attributes": {
+    "postgresql": {
+      "config": {
+        "listen_addresses": "192.168.50.7"
+      },
+      "password": {
+        "postgres": "vagrantpostgrespw"
+      },
+      "pg_hba": [
+        {
+          "type": "host",
+          "db": "all",
+          "user": "postgres",
+          "addr": "192.168.50.0/24",
+          "method": "trust"
+       }
+      ]
+    }
+  }
+}

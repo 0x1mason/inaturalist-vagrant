@@ -1,0 +1,30 @@
+{
+  "name": "graphite_server",
+  "description": "graphite_server role",
+  "json_class": "Chef::Role",
+  "chef_type": "role",
+  "run_list": [
+    "recipe[inaturalist-cookbook::graphite_server]"
+  ],
+  "default_attributes": {
+    "graphite": {
+      "listen_port": 8080
+    },
+    "grafana": {
+      "webserver_listen": "192.168.50.8",
+      "webserver_port": "81",
+      "graphite_server": "192.168.50.8",
+      "graphite_port": "8080"
+    },
+    "statsd": {
+      "extra_config": {
+        "flush_counts": false
+      }
+    }
+  },
+  "override_attributes": {
+    "apache": {
+      "listen_ports": [ "8080" ]
+    }
+  }
+}
