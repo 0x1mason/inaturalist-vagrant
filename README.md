@@ -4,13 +4,13 @@ Included is a [Vagrantfile](https://www.vagrantup.com/) that describes how to cr
 
 Installation
 ------------
-####Prerequisites
+#### Prerequisites
 * [Ruby](https://www.ruby-lang.org/en/downloads/)
 * [VirtualBox](https://www.virtualbox.org/wiki/Downloads/)
 * [Vagrant](https://www.vagrantup.com/downloads.html/)
 * [vagrant-omnibus plugin](https://github.com/opscode/vagrant-omnibus) , installed with `vagrant plugin install vagrant-omnibus`
-
-####On your local machine
+* [librarian-chef](https://github.com/applicationsonline/librarian-chef), installed with `gem install librarian-chef`
+#### On your local machine
 
 ```
 git clone git@github.com:pleary/inaturalist-vagrant.git
@@ -19,7 +19,7 @@ bundle
 librarian-chef install
 ```
 
-####You must first create a database VM:
+#### You must first create a database VM:
 
 ```
 vagrant up db
@@ -29,7 +29,7 @@ This can take 3-10 minutes.
 
 If you have a copy of the production database, you can place it in the root of this directory (at the same level as this README) and name it `inaturalist_production.csql` . If that file exists, when you `vagrant up db` then a new database named inaturalist_production will be created and that dump imported. This can take an hour or longer. Also note, this VM is defined as being allowed 4GB RAM by default in order for it to complete this import.
 
-####To create a development Rails environment:
+#### To create a development Rails environment:
 
 ```
 vagrant up app
@@ -43,7 +43,7 @@ cd /vagrant/shared/rails/inaturalist
 rspec
 ```
 
-####To create a development windshaft server:
+#### To create a development windshaft server:
 
 ```
 vagrant up windshaft
