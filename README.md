@@ -9,7 +9,7 @@ Installation
 * [VirtualBox](https://www.virtualbox.org/wiki/Downloads/)
 * [Vagrant](https://www.vagrantup.com/downloads.html/)
 * [vagrant-omnibus plugin](https://github.com/opscode/vagrant-omnibus) , installed with `vagrant plugin install vagrant-omnibus`
-* [librarian-chef](https://github.com/applicationsonline/librarian-chef), installed with `gem install librarian-chef`
+
 #### On your local machine
 
 ```
